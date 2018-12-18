@@ -7,7 +7,6 @@ context("Centrifuge: loadRawCentrifugeClassificaions")
 
 ## Constants
 CENTRIFUGE_CLASSIFICATIONS_LOCATION <- system.file("extdata", "../../data-raw/sh/centrifuge_classifications.tsv", package = "gunga")
-CENTRIFUGE_CLASSIFICATIONS_LOCATION <- system.file("extdata", "../../data-raw/sh/centrifuge_classifications.tsv", package = "gunga")
 CENTRIFUGE_CLASSIFICATIONS_COLUMNS_NAMES <- c("readID","seqID","taxID","score","X2ndBestScore","hitLength","queryLength","numMatches")
 
 test_that("Test loadRawCentrifugeClassificaions with centrifugeClassificationsLocation parameter null", {
@@ -27,6 +26,7 @@ test_that("Test loadRawCentrifugeClassificaions with centrifugeClassificationsLo
 })
 
 test_that("Test loadRawCentrifugeClassificaions", {
+  # print(CENTRIFUGE_CLASSIFICATIONS_LOCATION)
   rawCentrifugeClassifications <- loadRawCentrifugeClassifications(CENTRIFUGE_CLASSIFICATIONS_LOCATION)
   expect_equal(rawCentrifugeClassifications %>% nrow, 1561161)
   expect_equal(rawCentrifugeClassifications %>% ncol, 8)

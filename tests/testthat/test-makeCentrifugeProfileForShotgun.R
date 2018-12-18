@@ -6,9 +6,9 @@ library(dplyr)
 context("Centrifuge: makeCentrifugeProfileForShotgun")
 
 ## Constants
-CENTRIFUGE_CLASSIFICATIONS_LOCATION <- system.file("testdata", "../../data-raw/sh/centrifuge_classifications.tsv", package = "gunga")
+CENTRIFUGE_CLASSIFICATIONS_LOCATION <- system.file("extdata", "../../data-raw/sh/centrifuge_classifications.tsv", package = "gunga")
 
-CENTRIFUGE_PROFILE_LOCATION <- system.file("testdata", "../../data-raw/sh/centrifuge_report.tsv", package = "gunga")
+CENTRIFUGE_PROFILE_LOCATION <- system.file("extdata", "../../data-raw/sh/centrifuge_report.tsv", package = "gunga")
 
 CENTRIFUGE_GUNGA_PROFILE_COLUMNS_NAMES <- c("speciesId",
                                             "dnaCentrifugePercentual",
@@ -22,7 +22,7 @@ rawCentrifugeClassificationsDf <- loadRawCentrifugeClassifications(CENTRIFUGE_CL
 
 rawCentrifugeProfileDf <- loadRawCentrifugeProfile(CENTRIFUGE_PROFILE_LOCATION)
 
-taxdumprObject <- Taxdumpr("~/taxdump/nodes.dmp", "~/taxdump/names.dmp")
+taxdumprObject <- Taxdumpr("~/taxdump/nodes.dmp", "~/taxdump/names.dmp", "~/taxdump/merged.dmp")
 
 test_that("Test makeCentrifugeProfileForShotgun with rawCentrifugeProfileDf parameter null", {
   expect_error(makeCentrifugeProfileForShotgun(rawCentrifugeProfileDf = NULL, rawCentrifugeClassificationsDf = NULL, taxdumprObject = NULL),

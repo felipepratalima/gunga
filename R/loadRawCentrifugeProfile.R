@@ -2,6 +2,7 @@ require(taxdumpr)
 require(magrittr)
 require(stringr)
 require(dplyr)
+require(readr)
 
 #'
 #'
@@ -23,9 +24,10 @@ loadRawCentrifugeProfile <- function(centrifugeProfileLocation = "") {
     stop("The centrifugeProfileLocation parameter should not be an inexistent file")
   }
 
-  centrifugeProfileDf <- read.table(file = centrifugeProfileLocation,
-                                            header = T, sep = "\t",
-                                            colClasses = c("character", "numeric", "character", "numeric", "numeric", "numeric", "numeric"))
+  # centrifugeProfileDf <- read.table(file = centrifugeProfileLocation,
+  #                                           header = T, sep = "\t",
+  #                                           colClasses = c("character", "numeric", "character", "numeric", "numeric", "numeric", "numeric"))
+  centrifugeProfileDf <- readr::read_tsv(file = centrifugeProfileLocation, col_types = c(col_character(), col_integer(), col_character(), col_double(), col_integer(), col_integer(), col_double()))
 
   return(centrifugeProfileDf)
 }
