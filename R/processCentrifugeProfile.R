@@ -44,5 +44,5 @@ processCentrifugeProfile <- function(rawCentrifugeProfile = NULL, taxdumprObject
               numUniqueReadsPercentual = sum(numUniqueReads) / numberOfReads,
               abundanceSum = sum(abundance))
 
-  return(rawCentrifugeProfile)
+  return(rawCentrifugeShProfileSummaries)
 }
