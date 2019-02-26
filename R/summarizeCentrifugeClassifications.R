@@ -471,8 +471,8 @@ summarizeCentrifugeClassifications <- function(centrifugeClassifications = NULL)
     speciesClassificationsSummaries
   )
 
-  centrifugeClasificationstSummaries <- directClassificationsSummaries %>%
+  centrifugeClassificationsSummaries <- directClassificationsSummaries %>%
     merge(mappedClassificationsSummaries, by = c("rank", "standardId"), all = T)
 
-  return(centrifugeClasificationstSummaries)
+  return(centrifugeClassificationsSummaries)
 }
