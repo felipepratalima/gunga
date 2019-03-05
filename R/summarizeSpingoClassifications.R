@@ -43,6 +43,10 @@ require(dplyr)
               directSpingoSpeciesScoreMAD = mad(spingoSpeciesScore),
               directSpingoSpeciesScoreNonNormalMAD = mad(spingoSpeciesScore, constant = 1 / quantile(spingoSpeciesScore, 0.75))
     )
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  directClassificationsSummaries$standardId <- directClassificationsSummaries$standardId %>% as.character
+
   return(directClassificationsSummaries)
 }
 
@@ -90,6 +94,10 @@ require(dplyr)
     ) %>%
     rename(standardId = speciesId) %>%
     mutate(rank = "species")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  speciesClassificationsSummaries$standardId <- speciesClassificationsSummaries$standardId %>% as.character
+
   return(speciesClassificationsSummaries)
 }
 
@@ -137,6 +145,10 @@ require(dplyr)
     ) %>%
     rename(standardId = genusId) %>%
     mutate(rank = "genus")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  genusClassificationsSummaries$standardId <- genusClassificationsSummaries$standardId %>% as.character
+
   return(genusClassificationsSummaries)
 }
 
@@ -184,6 +196,10 @@ require(dplyr)
     ) %>%
     rename(standardId = familyId) %>%
     mutate(rank = "family")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  familyClassificationsSummaries$standardId <- familyClassificationsSummaries$standardId %>% as.character
+
   return(familyClassificationsSummaries)
 }
 
@@ -231,6 +247,10 @@ require(dplyr)
     ) %>%
     rename(standardId = orderId) %>%
     mutate(rank = "order")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  orderClassificationsSummaries$standardId <- orderClassificationsSummaries$standardId %>% as.character
+
   return(orderClassificationsSummaries)
 }
 
@@ -278,6 +298,10 @@ require(dplyr)
     ) %>%
     rename(standardId = classId) %>%
     mutate(rank = "class")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  classClassificationsSummaries$standardId <- classClassificationsSummaries$standardId %>% as.character
+
   return(classClassificationsSummaries)
 }
 
@@ -325,6 +349,10 @@ require(dplyr)
     ) %>%
     rename(standardId = phylumId) %>%
     mutate(rank = "phylum")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  phylumClassificationsSummaries$standardId <- phylumClassificationsSummaries$standardId %>% as.character
+
   return(phylumClassificationsSummaries)
 }
 
@@ -372,6 +400,10 @@ require(dplyr)
     ) %>%
     rename(standardId = superkingdomId) %>%
     mutate(rank = "superkingdom")
+
+  ## convert to char, beacuse sometimes we have non recognized taxonomies
+  superkingdomClassificationsSummaries$standardId <- superkingdomClassificationsSummaries$standardId %>% as.character
+
   return(superkingdomClassificationsSummaries)
 }
 
