@@ -94,7 +94,10 @@ processSpingoProfile <- function(rawSpingoSpeciesProfileDf = NULL, rawSpingoGenu
   rawSpingoSpeciesProfileDf$spingoGenusClassifiedRelativeAbundance[rawSpingoSpeciesProfileDf$spingoGenusClassifiedRelativeAbundance %>% is.na] <-
     rawSpingoSpeciesProfileDf$spingoSpeciesClassifiedRelativeAbundance[rawSpingoSpeciesProfileDf$spingoGenusClassifiedRelativeAbundance %>% is.na]
 
-  speciesInformation <- rawSpingoSpeciesProfileDf %>% select(genusId, spingoSpeciesRelativeAbundance, spingoSpeciesClassifiedRelativeAbundance)
+  speciesInformation <- rawSpingoSpeciesProfileDf %>%
+    group_by(genusId) %>%
+    summarize(spingoSpeciesRelativeAbundance = sum(spingoSpeciesRelativeAbundance),
+              spingoSpeciesClassifiedRelativeAbundance = sum(spingoSpeciesClassifiedRelativeAbundance))
   rawSpingoGenusProfileDf <- rawSpingoGenusProfileDf %>% merge(speciesInformation, by = "genusId", all.x = T)
 
   ## Family
