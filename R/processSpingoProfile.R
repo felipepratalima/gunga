@@ -22,8 +22,8 @@ processSpingoProfile <- function(rawSpingoSpeciesProfileDf = NULL, rawSpingoGenu
   ## Species
   rawSpingoSpeciesProfileDf <- rawSpingoSpeciesProfileDf %>% subset(spingoTaxonomyName != "(AMBIGUOUS") %>% subset(spingoTaxonomyName != "UNCLASSIFIED")
   rawSpingoSpeciesProfileDf$spingoRelativeAbundance <- rawSpingoSpeciesProfileDf$spingoRelativeAbundance %>% as.numeric
-  rawSpingoSpeciesProfileDf$spingoTaxonomyName <- rawSpingoSpeciesProfileDf$spingoTaxonomyName %>% str_replace_all("_", " ")
-  rawSpingoSpeciesProfileDf$taxonomyId <- rawSpingoSpeciesProfileDf$spingoTaxonomyName %>% getStandardTaxonomyIdsByNames(taxdumprObject, .)
+  # rawSpingoSpeciesProfileDf$spingoTaxonomyName <- rawSpingoSpeciesProfileDf$spingoTaxonomyName %>% str_replace_all("_", " ")
+  rawSpingoSpeciesProfileDf$taxonomyId <- rawSpingoSpeciesProfileDf$spingoTaxonomyName %>% str_replace_all("_", " ") %>% getStandardTaxonomyIdsByNames(taxdumprObject, .)
   rawSpingoSpeciesProfileDf$standardId <- rawSpingoSpeciesProfileDf$taxonomyId
   rawSpingoSpeciesProfileDf$rank <- "species"
 
