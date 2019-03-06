@@ -434,5 +434,10 @@ summarizeSpingoClassifications <- function(spingoClassifications = NULL) {
   spingoClassificationsSummaries <- directClassificationsSummaries %>%
     merge(mappedClassificationsSummaries, by = c("rank", "standardId", "spingoClostridiumGroup"), all = T)
 
+  spingoClassificationsSummaries$directSpingoPercentualOfSequences <-
+    100 * spingoClassificationsSummaries$directSpingoNumberOfSequences / nrow(spingoClassifications)
+  spingoClassificationsSummaries$mappedSpingoPercentualOfSequences <-
+    100 * spingoClassificationsSummaries$mappedSpingoNumberOfSequences / nrow(spingoClassifications)
+
   return(spingoClassificationsSummaries)
 }
