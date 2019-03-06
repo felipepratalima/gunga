@@ -38,13 +38,13 @@ processSpingoProfile <- function(rawSpingoSpeciesProfileDf = NULL, rawSpingoGenu
 
   rawSpingoSpeciesProfileDf$genusName[rawSpingoSpeciesProfileDf$genusId %>% is.na] <-
     rawSpingoSpeciesProfileDf$spingoTaxonomyName[rawSpingoSpeciesProfileDf$genusId %>% is.na] %>%
-    str_split(" ") %>%
+    str_split("_") %>%
     unlist %>%
     .[1]
 
   rawSpingoSpeciesProfileDf$genusId[rawSpingoSpeciesProfileDf$genusId %>% is.na] <-
     rawSpingoSpeciesProfileDf$spingoTaxonomyName[rawSpingoSpeciesProfileDf$genusId %>% is.na] %>%
-    str_split(" ") %>%
+    str_split("_") %>%
     unlist %>%
     .[1]
 
