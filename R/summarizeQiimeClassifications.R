@@ -105,7 +105,7 @@ require(dplyr)
   return(directClassificationsSummaries)
 }
 
-.getMappeQiimeClassificationsClassificationsSummariesByRank <- function(qiimeClassifications = NULL, taxonomyRank = "species") {
+.getMappedQiimeClassificationsSummariesByRank <- function(qiimeClassifications = NULL, taxonomyRank = "species") {
   summaryFieldName <- taxonomyRank %>% paste0("Id")
   summaryIndexes <- qiimeClassifications[[summaryFieldName]] %>% is.na == F
   classificationsSummaries <-
@@ -153,13 +153,13 @@ require(dplyr)
 summarizeQiimeClassifications <- function(qiimeClassifications = NULL) {
   directClassificationsSummaries <- .getDirectQiimeClassificationsSummaries(qiimeClassifications)
 
-  superkingdomClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "superkingdom")
-  phylumClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "phylum")
-  classClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "class")
-  orderClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "order")
-  familyClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "family")
-  genusClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "genus")
-  speciesClassificationsSummaries <- .getMappeQiimeClassificationsSummariesByRank(qiimeClassifications, "species")
+  superkingdomClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "superkingdom")
+  phylumClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "phylum")
+  classClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "class")
+  orderClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "order")
+  familyClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "family")
+  genusClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "genus")
+  speciesClassificationsSummaries <- .getMappedQiimeClassificationsSummariesByRank(qiimeClassifications, "species")
 
   mappedClassificationsSummaries <- rbind(
     superkingdomClassificationsSummaries,
