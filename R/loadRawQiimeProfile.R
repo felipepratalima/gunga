@@ -1,3 +1,8 @@
+require(readr)
+
+#'
+#'
+#' @param qiimeProfileLocation
 loadRawQiimeProfile <- function(qiimeProfileLocation = NA) {
   qiimeProfile <- readr::read_tsv(qiimeProfileLocation, skip = 1)
 

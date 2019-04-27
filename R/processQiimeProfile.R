@@ -1,3 +1,11 @@
+require(dplyr)
+require(magrittr)
+require(stringr)
+require(taxdumpr)
+
+#'
+#'
+#' @param qiimeProfile
 .getDirectQiimeProfileSummaries <- function(qiimeProfile = NULL) {
   directProfileSummaries <- qiimeProfile %>%
     subset(standardId %>% is.na == F) %>%
@@ -10,6 +18,11 @@
   return(directProfileSummaries)
 }
 
+
+#'
+#'
+#' @param qiimeProfile
+#' @param taxonomyRank
 .getMappedQiimeProfileSummariesByRank <- function(qiimeProfile = NULL, taxonomyRank = "species") {
   summaryFieldName <- taxonomyRank %>% paste0("Id")
   summaryIndexes <- qiimeProfile[[summaryFieldName]] %>% is.na == F
@@ -24,6 +37,11 @@
   return(classificationsSummaries)
 }
 
+
+#'
+#'
+#' @param qiimeProfile
+#' @param taxonomyRank
 processQiimeProfile <- function(qiimeProfile = NULL, taxdumprObject = NULL) {
   qiimeProfile$qiimeLineage <- qiimeProfile$qiimeLineage %>% as.character
 
